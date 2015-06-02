@@ -6,9 +6,7 @@ var CupView = function(cup){
 
   var that = this;
   this.$el.on('click', function(){
-    if(game.canChoose){
-      game.guess(that.cup.hasBall);
-    }
+    game.guess(that.cup.hasBall());
   })
 }
 
@@ -21,7 +19,7 @@ CupView.prototype.render = function($ul){
 }
 
 CupView.prototype.showBall = function(){
-  if(this.cup.hasBall && !this.showingBall){
+  if(this.cup.hasBall() && !this.showingBall){
     var ball = $('<div>').addClass('ball');
     this.$el.append(ball);
     this.showingBall = true;
@@ -44,7 +42,7 @@ CupView.prototype.move = function(newLoc){
 }
 
 CupView.prototype.reset = function(){
-  this.$el.removeClass(this.cup.location);
+  this.$el.removeClass(this.cup.getLoc());
   this.$el.addClass(this.cup.reset());
   this.showBall();
 }

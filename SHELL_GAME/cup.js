@@ -1,6 +1,6 @@
 var Cup = function(location){
   this.location = location;
-  this.hasBall = false;
+  this.ball = false;
   this.startLoc = location;
 }
 
@@ -15,6 +15,10 @@ Cup.prototype.move = function(loc){
 
 Cup.prototype.getLoc = function(){
   return this.location;
+}
+
+Cup.prototype.hasBall = function(){
+  return this.ball;
 }
 
 

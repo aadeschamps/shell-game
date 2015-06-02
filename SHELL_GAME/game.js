@@ -11,18 +11,20 @@ var game = {
   level: 1,
 
   guess: function(results){
-    if (results){
-      this.setDisplay('You have chosen wisely');
-      this.level += 1;
-      this.displayLevel();
-    } else {
-      this.setDisplay('You have chosen poorly');
+    if( this.canChoose ){
+      if (results){
+        this.setDisplay('You have chosen wisely');
+        this.level += 1;
+        this.displayLevel();
+      } else {
+        this.setDisplay('You have chosen poorly');
+      }
+      this.cups[1].showBall();
+      this.canChoose = false;
     }
-    this.cups[1].showBall();
-    this.canChoose = false;
   },
 
-  swapAround: function(index1, index2){
+  swapAround: function(){
     var cups = [];
     for(var i = 0; i < this.cups.length; i += 1){
       cups.push(this.cups[i]);
@@ -91,10 +93,10 @@ var game = {
   createCups: function(){
     var $cupList = $('#guesses');
     $cupList.html('');
-    for(var i = 0; i < 3; i += 1){
+    for(var i = 0; i < this.locations.length; i += 1){
       var cup = new Cup(this.locations[i])
       if(this.locations[i] === 'middle'){
-        cup.hasBall = true;
+        cup.ball = true;
       }
       var cupView = new CupView(cup);
       cupView.render($cupList)
