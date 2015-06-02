@@ -1,0 +1,65 @@
+
+body{
+  text-align: center;
+}
+#game-field{
+  height: 100px;
+  width: 250px;
+  margin: 0 auto 20px auto;
+  border: 2px black solid;
+  background-color: green;
+}
+
+#guesses {
+  list-style: none;
+  /*margin: 20px 0;*/
+  padding: 0;
+  position: relative;
+  height: 100%;
+  width: 175px;
+  margin: 30px auto;
+}
+
+#guesses li{
+  display: inline-block;
+  height: 50px;
+  width: 30px;
+  margin-left: 20px;
+  position: absolute;
+  /*transform: translateX(0px);*/
+  left: 0;
+  top: 0;
+  bottom: 0;
+  border: 1px solid black;
+  transition: all 1s ease;
+}
+
+#guesses li div:first-child {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: red;
+}
+
+.ball{
+  position: absolute;
+  bottom: 0;
+  height: 20px;
+  width: 20px;
+  background-color: blue;
+  border-radius: 10px;
+  left: calc(50% - 10px);
+  top: calc(50% - 10px);
+}
+
+#guesses .left {
+  left: 0px;
+}
+
+#guesses .middle {
+  left: 50px;
+}
+
+#guesses .right {
+  left: 100px;
+}
